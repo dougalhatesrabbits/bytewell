@@ -1,0 +1,464 @@
+:root {
+    --bg: #f4f8fa;
+    --surface: #fff;
+    --ink: #0f2438;
+    --muted: #4b6072;
+    --line: #d3dee6;
+    --teal: #0d7481;
+    --teal-ink: #fff;
+    --sun: #ffc83d;
+    --sun-ink: #0f2438;
+    --hero: #0f2438;
+    --hero-ink: #f4f8fa;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px)
+}
+
+@media(prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #0b1824;
+        --surface: #132638;
+        --ink: #eaf1f5;
+        --muted: #9db3c3;
+        --line: #26405a;
+        --teal: #4cc2d0;
+        --teal-ink: #0b1824;
+        --hero: #081320
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg: #0b1824;
+    --surface: #132638;
+    --ink: #eaf1f5;
+    --muted: #9db3c3;
+    --line: #26405a;
+    --teal: #4cc2d0;
+    --teal-ink: #0b1824;
+    --hero: #081320
+}
+
+html {
+    scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px));
+    scroll-behavior: smooth
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.6 Figtree, system-ui, sans-serif
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Bricolage Grotesque", Figtree, system-ui, sans-serif;
+    line-height: 1.1;
+    margin: 0 0 .5em
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800
+}
+
+p {
+    margin: 0 0 1em;
+    max-width: 62ch
+}
+
+a {
+    color: inherit
+}
+
+:focus-visible {
+    outline: 3px solid var(--sun);
+    outline-offset: 3px
+}
+
+.wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px
+}
+
+section {
+    padding: 72px 0
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--hero);
+    color: var(--hero-ink);
+    padding-top: env(safe-area-inset-top, 0px)
+}
+
+header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 16px
+}
+
+.logo {
+    font: 800 1.4rem "Bricolage Grotesque", sans-serif;
+    text-decoration: none
+}
+
+.logo span {
+    color: var(--sun)
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-size: .95rem;
+    overflow-x: auto
+}
+
+nav a {
+    text-decoration: none;
+    white-space: nowrap;
+    opacity: .9
+}
+
+nav a:hover {
+    opacity: 1;
+    text-decoration: underline
+}
+
+.btn {
+    display: inline-block;
+    font: 700 1rem Figtree, sans-serif;
+    padding: 13px 22px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    text-decoration: none;
+    cursor: pointer
+}
+
+.btn-sun {
+    background: var(--sun);
+    color: var(--sun-ink)
+}
+
+.btn-sun:hover {
+    filter: brightness(1.08)
+}
+
+.btn-line {
+    border-color: currentColor;
+    background: none;
+    color: inherit
+}
+
+.btn-line:hover {
+    background: rgba(255, 255, 255, .12)
+}
+
+.hero {
+    background: var(--hero);
+    color: var(--hero-ink);
+    padding: 80px 0 88px
+}
+
+.hero h1 {
+    font-size: clamp(2.8rem, 8vw, 5.6rem);
+    font-weight: 800;
+    letter-spacing: -.02em;
+    max-width: 11ch
+}
+
+.hero .lead {
+    font-size: 1.25rem;
+    max-width: 44ch;
+    opacity: .92
+}
+
+.hero .row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 28px 0
+}
+
+.hero small {
+    opacity: .75;
+    font-size: .95rem
+}
+
+.hero .grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    align-items: center
+}
+
+.ticket {
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+    transform: rotate(2deg)
+}
+
+.ticket b {
+    display: block;
+    font: 800 1.1rem "Bricolage Grotesque", sans-serif;
+    margin-bottom: 10px
+}
+
+.ticket div {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed var(--line);
+    padding: 8px 0;
+    font-size: .95rem
+}
+
+.ticket .done {
+    color: var(--teal);
+    font-weight: 700
+}
+
+.ticket .stamp {
+    margin-top: 14px;
+    font: 800 1.5rem "Bricolage Grotesque", sans-serif;
+    color: var(--teal)
+}
+
+.tabs {
+    display: inline-flex;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 28px
+}
+
+.tabs button {
+    font: 700 1rem Figtree, sans-serif;
+    background: none;
+    border: 0;
+    padding: 10px 22px;
+    border-radius: 7px;
+    color: var(--muted);
+    cursor: pointer
+}
+
+.tabs button[aria-selected="true"] {
+    background: var(--teal);
+    color: var(--teal-ink)
+}
+
+.panel[hidden] {
+    display: none
+}
+
+.services {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px
+}
+
+.services li {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--teal);
+    border-radius: 6px;
+    padding: 18px 20px
+}
+
+.services strong {
+    display: block;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1.1rem
+}
+
+.services span {
+    color: var(--muted);
+    font-size: .95rem
+}
+
+.why {
+    background: var(--surface);
+    border-block: 1px solid var(--line)
+}
+
+.why ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 28px 40px
+}
+
+.why h3 {
+    font-size: 1.15rem;
+    margin-bottom: .2em
+}
+
+.why p {
+    color: var(--muted);
+    margin: 0
+}
+
+.scroll {
+    overflow-x: auto
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    min-width: 420px
+}
+
+th,
+td {
+    text-align: left;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--line)
+}
+
+th {
+    background: var(--hero);
+    color: var(--hero-ink);
+    font-weight: 700
+}
+
+td:last-child {
+    font-weight: 700;
+    white-space: nowrap
+}
+
+.note {
+    color: var(--muted);
+    font-size: .9rem;
+    margin-top: 14px
+}
+
+details {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 10px
+}
+
+summary {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 16px 20px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px
+}
+
+summary::after {
+    content: "+";
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--teal)
+}
+
+details[open] summary::after {
+    content: "\2212"
+}
+
+details p {
+    padding: 0 20px;
+    margin: 0 0 18px;
+    color: var(--muted)
+}
+
+.contact {
+    background: var(--hero);
+    color: var(--hero-ink)
+}
+
+.contact .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px
+}
+
+form {
+    display: grid;
+    gap: 14px
+}
+
+label {
+    font-weight: 700;
+    font-size: .95rem;
+    display: grid;
+    gap: 6px
+}
+
+input,
+select,
+textarea {
+    font: inherit;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid var(--line);
+    background: #fff;
+    color: #0f2438;
+    width: 100%
+}
+
+.ok {
+    background: var(--sun);
+    color: var(--sun-ink);
+    padding: 22px;
+    border-radius: 10px;
+    font-weight: 700
+}
+
+footer {
+    padding: 28px 0;
+    font-size: .9rem;
+    color: var(--muted);
+    text-align: center
+}
+
+@media(max-width:760px) {
+    section {
+        padding: 52px 0
+    }
+
+    .hero .grid,
+    .contact .grid {
+        grid-template-columns: 1fr
+    }
+
+    .ticket {
+        transform: none
+    }
+
+    nav a.hide {
+        display: none
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior: auto
+    }
+}
