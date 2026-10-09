@@ -61,8 +61,8 @@ async function submitHandler(request, env) {
 	};
 	const result = await createAirtableRecord(env, reqBody);
   	if (result && result.ok) {
-    	return new Response("Success,message sent", { status: 200 });
-		return Response.redirect(new URL("https://https://bytewell.djbrooke.uk", request.url), 302);
+    	//return new Response("Success,message sent", { status: 200 });
+		return Response.redirect(new URL("https://bytewell.djbrooke.uk", request.url), 302);
   	}
 	const errorText = await result.text();
 	console.error("Airtable API error:", result.status, errorText);
