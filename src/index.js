@@ -61,8 +61,8 @@ async function submitHandler(request, env) {
 	};
 	const result = await createAirtableRecord(env, reqBody);
   	if (result && result.ok) {
-    	return new Response("Success,message sent", { status: 200 });
-		//return Response.redirect(new URL("https://bytewell.djbrooke.uk", request.url), 302);
+    	//return new Response("Success,message sent", { status: 200 });
+		return Response.redirect(new URL("https://bytewell.djbrooke.uk", request.url), 302);
   	}
 	const errorText = await result.text();
 	console.error("Airtable API error:", result.status, errorText);
@@ -78,7 +78,7 @@ export default {
 		if (url.pathname === "/submit") {
 			return await submitHandler(request, env);
 			if (response.ok) {
-  				window.location.href = "/";
+  				window.location.href = "https://bytewell.djbrooke.uk";
 			}
 		}
 		return new Response("Not found", { status: 404 });
