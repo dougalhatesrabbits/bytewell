@@ -246,17 +246,34 @@
           <p><strong>Sorted. Properly.</strong></p>
         </div>
         <div>
-          <form id="f" action="form-process.php" method="POST">
-            <label>Your name<input id="n" type="text" name="name" autocomplete="name" required></label>
-            <label>Email or phone<input id="e" type="email" name="email" autocomplete="email" required></label>
-            <label>What do you need?<select id="topic">
-                <option>Home repair or support</option>
-                <option>Home visit</option>
-                <option>Business quote</option>
-                <option>Ongoing business support</option>
-                <option>Something else</option>
-              </select></label>
-            <label>Tell us a bit more<textarea id="m" rows="3" name="message"></textarea></label>
+          <form id="contact-form" action="https://bytewell.david-brooke14.workers.dev/submit" method="POST">
+            <label for="first_name">Your First name</label>
+            <input type="text" id="first_name" name="first_name" autocomplete="given-name" placeholder="Jane" required>
+            <label for="last_name">Your Last name</label>
+            <input type="text" id="last_name" name="last_name" autocomplete="family-name" placeholder="Doe" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="janedoe@youremail.com" required>
+            <label for="phone">
+              Phone
+              <span>Optional</span>
+            </label>
+            <input type="text" id="phone" name="phone" autocomplete="tel" placeholder="0151 123456">
+            <label for="subject">What do you need?</label>
+            <select id="subject" name="subject">
+                <option value="repair">Home repair or support</option>
+                <option value="visit">Home visit</option>
+                <option value="quote">Business quote</option>
+                <option value="support">Ongoing business support</option>
+                <option value="other">Something else</option>
+            </select>
+            <label for="message">
+              Tell us a bit more
+              <span>Max 500 characters</span>
+            </label>
+            <textarea id="message" name="message" rows="4"
+              placeholder="Tenetur quaerat expedita vero et illo. Tenetur explicabo dolor voluptatem eveniet. Commodi est beatae id voluptatum porro laudantium. Quam placeat accusamus vel officiis vel. Et perferendis dicta ut perspiciatis quos iste. Tempore autem molestias voluptates in sapiente enim doloremque."
+              required>
+              </textarea>
             <p id="err" role="alert" style="color:var(--sun);margin:0" hidden>Add your name and a way to reach you.</p>
             <button class="btn btn-sun" type="submit">Send message</button>
           </form>
